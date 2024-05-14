@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { SetPage, clearError, setData } from "../Redux/Slice/dataSlice";
+import { SetPage, clearData, clearError, setData } from "../Redux/Slice/dataSlice";
 import { setisLoading, setError } from "../Redux/Slice/dataSlice"; // Assuming your dataSlice file is named dataSlice.js
 
 const useFetchCompanyData = (page) => {
@@ -22,6 +22,7 @@ const useFetchCompanyData = (page) => {
   useEffect(() => {
     
     const fetchData = async () => {
+      dispatch(clearData());
       dispatch(setisLoading(true));
       dispatch(clearError());
      

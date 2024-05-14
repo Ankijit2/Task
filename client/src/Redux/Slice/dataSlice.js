@@ -18,6 +18,10 @@ const dataSlice = createSlice({
       
 
     },
+    clearData: (state) => {
+      state.companydata = null,
+      state.page = 0
+    },
     setisLoading: (state, action) => {
       state.loading = action.payload
     },
@@ -37,5 +41,5 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setData, SetPage, setisLoading, setError,clearError } = dataSlice.actions;
+export const { setData,clearData, SetPage, setisLoading, setError,clearError } = dataSlice.actions;
 export default dataSlice.reducer;
