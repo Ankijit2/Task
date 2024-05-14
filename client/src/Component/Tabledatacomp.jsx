@@ -20,7 +20,7 @@ function Tabledatacomp() {
           <TableCell align="center">{row.website_url}</TableCell>
           <TableCell align="center">{row.foundedYear}</TableCell>
           <TableCell align="center">{row.Revenue}$</TableCell>
-          <TableCell align="center">{row.keywords}</TableCell>
+          <TableCell align="center">{row.keywords.map((key,item)=>{return <span key={item}>{key},</span> })}</TableCell>
           <TableCell align="center">{row.company_email}</TableCell>
           <TableCell align="center">{row.location}</TableCell>
         </TableRow>

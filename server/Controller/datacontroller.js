@@ -30,12 +30,13 @@ const getContactData = asyncHandler(async (req, res) => {
         new ApiResponse(400, null, "Page not found", "false" )
       );
 
-      if(filtercriteria=="null" && isAscending!="null" || isAscending=="null" && filtercriteria!="null"){
-        return res.status(400).json(new ApiResponse(400, {message:"Filter criteria not found", sucess:"false"}))
-      }
       if(searchcategory=="null" && searchfield!=="null" || searchfield=="null" && searchcategory!=="null"){
         return res.status(400).json(new ApiResponse(400, {message:"Search criteria not found", sucess:"false"}))
       }
+      if(filtercriteria=="null" && isAscending!="null" || isAscending=="null" && filtercriteria!="null"){
+        return res.status(400).json(new ApiResponse(400, {message:"Filter criteria not found", sucess:"false"}))
+      }
+      
 
 
   //Sort and Search Logic
