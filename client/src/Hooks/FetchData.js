@@ -35,15 +35,16 @@ const useFetchCompanyData = (page) => {
         );
         const companydata = response.data.details;
         console.log(companydata);
-        
+        console.log(response)
 
         setMessage("Data fetched successfully");
 
         dispatch(setData(companydata));
         
       } catch (err) {
-        dispatch(setError(err.response.data.details.message));
-        console.log(err);
+        dispatch(setError(err.response.data.message));
+        console.log(err.response.data.message);
+        
       } finally {
         dispatch(setisLoading(false));
       }

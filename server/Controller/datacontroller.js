@@ -18,12 +18,9 @@ const getContactData = asyncHandler(async (req, res) => {
   if (!page)
     return res
       .status(400)
-      .json(new ApiResponse(400, null, "Page not found", "false"));
+      .json(new ApiResponse(400, null, "Page not found", false));
 
-  if (page < 1)
-    return res
-      .status(400)
-      .json(new ApiResponse(400, null, "Page not found", "false"));
+
 
   if (
     (searchcategory == "null" && searchfield !== "null") ||
@@ -32,24 +29,20 @@ const getContactData = asyncHandler(async (req, res) => {
     return res
       .status(400)
       .json(
-        new ApiResponse(400, {
-          message: "Search criteria not found",
-          sucess: "false",
-        })
+        new ApiResponse(400, null,
+          "Search criteria not found",
+          false,
+        )
       );
   }
+  
   if (
     (filtercriteria == "null" && isAscending != "null") ||
     (isAscending == "null" && filtercriteria != "null")
   ) {
     return res
-      .status(400)
-      .json(
-        new ApiResponse(400, {
-          message: "Filter criteria not found",
-          sucess: "false",
-        })
-      );
+    .status(400)
+    .json(new ApiResponse(404, null, "filtercritera not found", false));
   }
 
 
@@ -59,7 +52,7 @@ const getContactData = asyncHandler(async (req, res) => {
 
 
 
-  
+
   //Sort and Search Logic
 
   if (
@@ -100,7 +93,7 @@ const getContactData = asyncHandler(async (req, res) => {
     if (totalDocumentCount === 0 || companyData.length === 0) {
       return res
         .status(404)
-        .json(new ApiResponse(404, null, "Data not found", "false"));
+        .json(new ApiResponse(404, null, "Data not found", false));
     }
     return res.status(200).json(
       new ApiResponse(200, {
@@ -145,11 +138,12 @@ const getContactData = asyncHandler(async (req, res) => {
     // Extract the count value
     const totalDocumentCount =
       totalDocuments.length > 0 ? totalDocuments[0].totalDocuments : 0;
+      console.log(totalDocumentCount);
 
-    if (totalDocumentCount === 0 || companyData.length === 0) {
+    if (totalDocumentCount === 0) {
       return res
         .status(404)
-        .json(new ApiResponse(404, null, "Data not found", "false"));
+        .json(new ApiResponse(404, null, "Data not found", false));
     } // This will now contain the count
 
     const totalPages = Math.ceil(totalDocumentCount / (limit || 10));
@@ -195,7 +189,7 @@ const getContactData = asyncHandler(async (req, res) => {
     if (totalDocuments === 0 || companyData.length === 0) {
       return res
         .status(404)
-        .json(new ApiResponse(404, null, "Data not found", "false"));
+        .json(new ApiResponse(404, null, "Data not found", false));
     }
 
     return res.status(200).json(
@@ -235,7 +229,7 @@ const getContactData = asyncHandler(async (req, res) => {
   if (totalDocuments === 0 || companyData.length === 0) {
     return res
       .status(404)
-      .json(new ApiResponse(404, null, "Data not found", "false"));
+      .json(new ApiResponse(404, null, "Data not found", false));
   }
 
   return res.status(200).json(

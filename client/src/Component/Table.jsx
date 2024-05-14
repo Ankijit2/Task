@@ -23,6 +23,7 @@ import { SetPage } from "../Redux/Slice/dataSlice.js";
 function TableData() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
+  console.log(data)
   
   useFetchCompanyData(data.page);
 
@@ -88,7 +89,7 @@ function TableData() {
           <TableBody
             sx={{ position: "relative", height: "70vh", width: "100vw" }}
           >
-            {data.error && company?.companyData ? <Error /> : (!data.loading ? <Tabledatacomp /> : <Loader />)}
+            {data.error?  <Error /> : (!data.loading ? <Tabledatacomp /> : <Loader />)}
 
             
 

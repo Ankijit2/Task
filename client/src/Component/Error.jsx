@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Error = () => {
   const errormessage = useSelector((state) => state.data?.errormessage) || "Something went wrong!";
+  console.log(errormessage)
   return (
     
       <Alert severity="error" sx={{ position: 'absolute', left: '40%', top: '40%', fontSize: '20px' }}>
