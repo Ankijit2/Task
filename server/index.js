@@ -1,9 +1,8 @@
 import {app} from "./app.js"
 import ConnectDB from "./database/dbconnect.js"
 import 'dotenv/config'
-import { Data } from "./models/Companydatamodel.js";
-const PORT = process.env.PORT || 5000;
 
+const PORT = process.env.PORT || 4000;
 
 
 ConnectDB()

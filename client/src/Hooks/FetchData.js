@@ -7,7 +7,7 @@ import { setisLoading, setError } from "../Redux/Slice/dataSlice"; // Assuming y
 const useFetchCompanyData = (page) => {
   const dispatch = useDispatch();
   const [Message, setMessage] = useState(null);
-  const baseurl = "http://localhost:4000/api/companydetails";
+  const baseurl = `${import.meta.env.VITE_SERVER}/api/companydetails`;
   const SearchField = useSelector((state) => state.CriteriaSearch?.SearchField);
   const SearchCategory = useSelector((state) => state.CriteriaSearch?.SearchCategory);
 
