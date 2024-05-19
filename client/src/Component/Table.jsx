@@ -23,15 +23,12 @@ import { SetPage } from "../Redux/Slice/dataSlice.js";
 function TableData() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
-  console.log(data)
+
   
   useFetchCompanyData(data.page);
 
   const company = data.companydata;
 
-  const changepage = (event, newPage) => {
-    dispatch(SetPage(newPage));
-  };
 
   const columns = [
     { id: "name", label: "Company Name", align: "center" },
@@ -105,7 +102,7 @@ function TableData() {
           count={company?.pagination.totaldata || 0}
           page={data.page || 0}
           rowsPerPage={10}
-          onPageChange={changepage}
+          onPageChange={(e, page) => dispatch(SetPage(page))}
         />
       </TableContainer>
     </>

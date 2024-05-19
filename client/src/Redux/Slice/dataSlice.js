@@ -19,8 +19,7 @@ const dataSlice = createSlice({
 
     },
     clearData: (state) => {
-      state.companydata = null,
-      state.page = 0
+      state.companydata = null
     },
     setisLoading: (state, action) => {
       state.loading = action.payload
